@@ -141,8 +141,8 @@ _checkResponse(res){
   }
 
   const api = new Api({
-    // url:'https://aniram.nomoredomains.work',
-    url: "http://localhost:3000",
+    url:'https://aniram.nomoredomains.work',
+    // url: "http://localhost:3000",
     // headers: {
     //   authorization: "4c8fe4ba-ddf5-4cbd-b158-fff86875ab55",
     //   "Content-Type": "application/json",
