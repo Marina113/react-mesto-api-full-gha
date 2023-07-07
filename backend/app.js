@@ -21,8 +21,7 @@ mongoose.connect(
 );
 
 app.use(cors());
-app.use(express.json());
-app.use(requestLogger); // подключаем логгер запросов
+
 // app.use(logger);
 
 app.get('/crash-test', () => {
@@ -30,6 +29,9 @@ app.get('/crash-test', () => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
+
+app.use(express.json());
+app.use(requestLogger); // подключаем логгер запросов
 
 app.post('/signin', loginValidation, login);
 app.post('/signup', createUserValidation, createUser);
