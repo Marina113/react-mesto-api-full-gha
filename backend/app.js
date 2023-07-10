@@ -45,6 +45,7 @@ app.post('/signup', createUserValidation, createUser);
 
 // авторизация
 app.use(auth);
+app.use(routes);
 
 app.use('/*', (req, res, next) => { next(new NotFoundError('Страница не существует')); });
 
@@ -60,7 +61,7 @@ app.use((err, req, res, next) => {
     });
 });
 
-app.use(routes);
+// app.use(routes);
 
 app.use(errorLogger); // подключаем логгер ошибок
 
