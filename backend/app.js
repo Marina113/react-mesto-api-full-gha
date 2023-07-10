@@ -61,8 +61,6 @@ app.use((err, req, res, next) => {
     });
 });
 
-// app.use(routes);
-
 app.use(errorLogger); // подключаем логгер ошибок
 
 app.use(errors());
