@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 158.160.98.10
 
-Frontend https://...
+Frontend https://api.aniram.nomoredomains.work/
 
-Backend https://...
+Backend https://aniram.nomoredomains.work/
