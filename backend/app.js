@@ -11,10 +11,15 @@ const auth = require('./middlewares/auth');
 const { loginValidation, createUserValidation } = require('./middlewares/validation');
 const NotFoundError = require('./errors/notFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { DB_ADDRESS } = require('./config');
+
+const { DB_ADDRESS = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 
 const { PORT = 3000 } = process.env;
 const app = express();
+
+app.use(cors());
+app.use(express.json());
+app.use(requestLogger); // подключаем логгер запросов
 
 // подключаемся к серверу mongo
 mongoose.connect(
@@ -22,16 +27,18 @@ mongoose.connect(
   { useNewUrlParser: true },
 );
 
-app.use(cors());
+// mongoose.connect(
+//   DB_ADDRESS,
+// )
+//   .then(() => console.log('Монго запущено'))
+//   // eslint-disable-next-line no-undef
+//   .catch((err) => console.log(err));
 
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
-
-app.use(express.json());
-app.use(requestLogger); // подключаем логгер запросов
 
 app.post('/signin', loginValidation, login);
 app.post('/signup', createUserValidation, createUser);
