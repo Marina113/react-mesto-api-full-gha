@@ -49,6 +49,10 @@ app.use(routes);
 
 app.use('/*', (req, res, next) => { next(new NotFoundError('Страница не существует')); });
 
+app.use(errorLogger); // подключаем логгер ошибок
+
+app.use(errors());
+
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   const { statusCode = 500, message } = err;
@@ -60,10 +64,6 @@ app.use((err, req, res, next) => {
         : message,
     });
 });
-
-app.use(errorLogger); // подключаем логгер ошибок
-
-app.use(errors());
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
