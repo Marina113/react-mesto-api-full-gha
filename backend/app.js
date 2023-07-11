@@ -12,20 +12,20 @@ const { loginValidation, createUserValidation } = require('./middlewares/validat
 const NotFoundError = require('./errors/notFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { DB_ADDRESS = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
+// const { DB_ADDRESS = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 
 const { PORT = 3000 } = process.env;
 const app = express();
 
+// подключаемся к серверу mongo
+mongoose.connect(
+  'mongodb://127.0.0.1:27017/mestodb',
+  { useNewUrlParser: true },
+);
+
 app.use(cors());
 app.use(express.json());
 app.use(requestLogger); // подключаем логгер запросов
-
-// подключаемся к серверу mongo
-mongoose.connect(
-  DB_ADDRESS,
-  { useNewUrlParser: true },
-);
 
 // mongoose.connect(
 //   DB_ADDRESS,
