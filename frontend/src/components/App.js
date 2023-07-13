@@ -208,7 +208,7 @@ function App() {
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
-            <div className="App">
+            <div className="App" style={{ background: `#000000` }}>
                 <div className="body">
                     <div className="page">
                         <Header email={email}
