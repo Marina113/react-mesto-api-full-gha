@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.98.10
+IP 158.160.98.10
 
 Frontend https://api.aniram.nomoredomains.work/
 
